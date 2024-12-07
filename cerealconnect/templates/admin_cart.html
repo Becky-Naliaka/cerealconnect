@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - All Carts{% endblock %}
+
+{% block content %}
+<h2>All Customer Carts</h2>
+
+{% if carts %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart in carts %}
+            <tr>
+                <td>{{ cart.customer.name }}</td>
+                <td>{{ cart.product.name }}</td>
+                <td>{{ cart.quantity }}</td>
+                <td>{{ cart.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No carts found.</p>
+{% endif %}
+{% endblock %}

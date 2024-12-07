@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Ratings - CerealConnect{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5">Product Ratings</h1>
+    <div class="row">
+        {% for rating in ratings %}
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>{{ rating.product.name }}</h5>
+                    <p>Rated {{ rating.rating }} stars</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

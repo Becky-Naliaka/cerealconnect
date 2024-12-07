@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="search-container">
+        <h1>Search Results</h1>
+        <form method="GET" action="{% url 'search-products' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for products..." />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if products %}
+            <h2>Found {{ products.count }} product(s) for "{{ query }}"</h2>
+            <ul>
+                {% for product in products %}
+                    <li>
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
+                            <h3>{{ product.name }}</h3>
+                            <p>{{ product.description|truncatewords:20 }}</p>
+                            <p><strong>Price:</strong> ${{ product.price }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No products found for "{{ query }}". Try searching with a different term.</p>
+        {% endif %}
+    </div>
+{% endblock %}

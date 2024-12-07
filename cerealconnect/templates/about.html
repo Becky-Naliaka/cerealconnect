@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-in-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .img-fluid {
+        border-radius: 15px; /* Soft rounded edges */
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    .img-fluid:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly elevated shadow on hover */
+    }
+
+    .text-primary {
+        animation: color-shift 5s infinite alternate;
+    }
+
+    @keyframes color-shift {
+        0% {
+            color: #007bff;
+        }
+        100% {
+            color: #6c757d;
+        }
+    }
+</style>
+
+<div class="container py-5">
+    <!-- Row 1: About Us Text on the Left, Image on the Right -->
+    <div class="row align-items-center mb-5 fade-in">
+        <!-- Text Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="text-primary mb-3">About Us</h2>
+            <p class="mb-4">We are a dedicated team passionate about bringing the best cereals to your table. Our mission is to provide high-quality, fresh, and nutritious cereals directly from trusted farms. We believe in delivering only the finest products to our customers, ensuring satisfaction and health with every bite.</p>
+        </div>
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img class="img-fluid w-100" src="{% static 'images/image2.jpg' %}" alt="About Us">
+        </div>
+    </div>
+
+    <!-- Row 2: How We Obtain Products (Text on Left, Image on Right) -->
+    <div class="row align-items-center mb-5 fade-in">
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img class="img-fluid w-100" src="{% static 'images/image1.jpg' %}" alt="How We Obtain Products">
+        </div>
+        <!-- Text Column -->
+        <div class="col-lg-6">
+            <h2 class="text-primary mb-3">How We Obtain Our Products</h2>
+            <p class="mb-4">We source our products from farms that adhere to sustainable farming practices. Our team handpicks only the best cereals, ensuring the highest quality and taste. From seed to harvest, we are involved in every step to guarantee freshness and quality for our customers.</p>
+        </div>
+    </div>
+
+    <!-- Row 3: How We Store (Text on Left, Image on Right) -->
+    <div class="row align-items-center mb-5 fade-in">
+        <!-- Text Column -->
+        <div class="col-lg-6">
+            <h2 class="text-primary mb-3">How We Store Our Products</h2>
+            <p class="mb-4">Once we have obtained our cereals, they are carefully stored in temperature-controlled warehouses. These storage facilities are equipped with the latest technology to maintain the ideal conditions for preserving freshness and preventing spoilage. Our team ensures the best practices in storage and handling to keep our products in top shape.</p>
+        </div>
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img class="img-fluid w-100" src="{% static 'images/image3.jfif' %}" alt="How We Store Our Products">
+        </div>
+    </div>
+
+    <!-- Row 4: How You Pay (Image on Left, Text on Right) -->
+    <div class="row align-items-center mb-5 fade-in">
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img class="img-fluid w-100" src="{% static 'images/image1.jpg' %}" alt="Payment Methods">
+        </div>
+        <!-- Text Column -->
+        <div class="col-lg-6">
+            <h2 class="text-primary mb-3">How You Pay</h2>
+            <p class="mb-4">We offer multiple payment methods for your convenience, including Mpesa, credit card, and bank transfers. After selecting your favorite cereals, you can choose your preferred payment option. Once payment is confirmed, we process and dispatch your order quickly and efficiently. We ensure secure transactions and provide customer support throughout the process.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const fadeElements = document.querySelectorAll(".fade-in");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fade-in-visible");
+                }
+            });
+        });
+        fadeElements.forEach((el) => observer.observe(el));
+    });
+</script>
+{% endblock %}
+
+

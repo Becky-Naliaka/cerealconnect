@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Are you sure you want to delete the product "{{ product.name }}"?</h1>
+
+    <div class="product-details">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        <p><strong>Name:</strong> {{ product.name }}</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'my_products' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}

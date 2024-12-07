@@ -1,0 +1,45 @@
+/* Testimonial Section */
+.container-xxl.py-5 {
+    padding-top: 80px; /* Adjust padding for top */
+    padding-bottom: 80px; /* Adjust padding for bottom */
+}
+
+/* Testimonial Item */
+.testimonial-item {
+    padding: 30px;
+    margin-bottom: 30px;
+    min-height: 250px; /* Ensures consistent item height */
+}
+
+/* Owl Carousel */
+.owl-carousel {
+    min-height: 400px; /* Set minimum height for the carousel */
+}
+
+/* Font Size for Testimonial Text */
+.testimonial-item p {
+    font-size: 16px; /* Adjust font size */
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .testimonial-item {
+        padding: 20px;  /* Adjust padding for smaller screens */
+    }
+
+    .testimonial-item img {
+        width: 70px; /* Adjust image size for smaller screens */
+        height: 70px; /* Adjust image size for smaller screens */
+    }
+}
+
+/* Style for wow animations */
+.wow {
+    visibility: hidden; /* Ensure animations trigger properly */
+}
+
+/* Optional: Add additional space for the section header */
+.section-title.bg-white.text-center.text-primary.px-3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

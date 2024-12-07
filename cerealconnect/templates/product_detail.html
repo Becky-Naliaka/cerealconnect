@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="product-detail">
+        <h1>{{ product.name }}</h1>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Quantity Available:</strong> {{ product.quantity }}</p>
+
+        <!-- Display Ratings -->
+        <div class="ratings">
+            <h2>Ratings:</h2>
+            {% for rating in ratings %}
+                <div class="rating">
+                    <strong>{{ rating.user.username }}</strong> rated this product:
+                    <strong>{{ rating.rating }} stars</strong>
+                    {% if rating.comment %}
+                        <p>{{ rating.comment }}</p>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>No ratings yet.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Rating Form (Only for logged-in users) -->
+        {% if user.is_authenticated %}
+            <h2>Add a Rating:</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+            </form>
+        {% else %}
+            <p>You must be logged in to rate this product.</p>
+        {% endif %}
+    </div>
+{% endblock %}

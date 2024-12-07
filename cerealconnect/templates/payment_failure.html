@@ -1,0 +1,13 @@
+<!-- templates/payment_failure.html -->
+<!-- Load static files -->
+{% extends 'base.html' %} <!-- Extend the base template -->
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>Payment Failed</h1>
+    <p>We are sorry, but your payment could not be processed. Please try again or contact support if the issue persists.</p>
+    <p>If you believe this is an error, feel free to reach out to us for assistance.</p>
+    <a href="{% url 'cart' %}" class="btn">Go Back to Cart</a> <!-- Link to go back to the cart -->
+    <a href="{% url 'home' %}" class="btn">Return to Home</a> <!-- Link back to home page -->
+</div>
+{% endblock %}

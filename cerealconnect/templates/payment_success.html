@@ -1,0 +1,11 @@
+<!-- templates/payment_success.html -->>
+{% extends 'base.html' %} <!-- Extend the base template -->
+{% load static %} <
+{% block content %}
+<div class="container">
+    <h1>Payment Successful!</h1>
+    <p>Thank you for your purchase. Your payment was processed successfully.</p>
+    <p>Your order will be processed shortly. You will receive a confirmation email soon.</p>
+    <a href="{% url 'home' %}" class="btn">Return to Home</a> <!-- Link back to the home page -->
+</div>
+{% endblock %}

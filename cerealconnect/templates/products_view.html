@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Add New Product</h2>
+
+    <!-- Product form -->
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}  <!-- Display form fields -->
+
+      <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+
+    <div class="mt-4">
+      <a href="{% url 'my_products' %}" class="btn btn-secondary">Back to My Products</a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/add_product.js' %}"></script>  <!-- Optionally include JS for form validation -->
+{% endblock %}
