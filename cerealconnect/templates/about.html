@@ -80,19 +80,117 @@
         </div>
     </div>
 
-    <!-- Row 4: How You Pay (Image on Left, Text on Right) -->
-    <div class="row align-items-center mb-5 fade-in">
-        <!-- Image Column -->
-        <div class="col-lg-6 mb-4 mb-lg-0">
-            <img class="img-fluid w-100" src="{% static 'images/image1.jpg' %}" alt="Payment Methods">
+{#    <!-- Row 4: How You Pay (Image on Left, Text on Right) -->#}
+{#    <div class="row align-items-center mb-5 fade-in">#}
+{#        <!-- Image Column -->#}
+{#        <div class="col-lg-6 mb-4 mb-lg-0">#}
+{#            <img class="img-fluid w-100" src="{% static 'images/image1.jpg' %}" alt="Payment Methods">#}
+{#        </div>#}
+{#        <!-- Text Column -->#}
+{#        <div class="col-lg-6">#}
+{#            <h2 class="text-primary mb-3">How You Pay</h2>#}
+{#            <p class="mb-4">We offer multiple payment methods for your convenience, including Mpesa, credit card, and bank transfers. After selecting your favorite cereals, you can choose your preferred payment option. Once payment is confirmed, we process and dispatch your order quickly and efficiently. We ensure secure transactions and provide customer support throughout the process.</p>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+    <!-- Shopping, Payment, and Delivery Section -->
+<div class="container py-5" id="payment">
+    <h2 class="text-center text-primary mb-5">Shopping, Payment, and Delivery</h2>
+    <div class="row justify-content-center text-center mb-5">
+        <!-- Shopping Section -->
+        <div class="col-md-4 payment-box">
+            <i class="fa fa-shopping-cart text-success mb-3"></i>
+            <h3>How You Shop</h3>
+            <p>Browse through our wide selection of cereals, add to your cart, and proceed to checkout easily and securely.</p>
         </div>
-        <!-- Text Column -->
-        <div class="col-lg-6">
-            <h2 class="text-primary mb-3">How You Pay</h2>
-            <p class="mb-4">We offer multiple payment methods for your convenience, including Mpesa, credit card, and bank transfers. After selecting your favorite cereals, you can choose your preferred payment option. Once payment is confirmed, we process and dispatch your order quickly and efficiently. We ensure secure transactions and provide customer support throughout the process.</p>
+        <!-- Payment Section -->
+        <div class="col-md-4 payment-box">
+            <i class="fa fa-mobile-alt text-primary mb-3"></i>
+            <h3>How You Pay</h3>
+            <p>Pay seamlessly using MPesa's STK Push. Enter your phone number at pay, and authorize the payment directly from your phone.</p>
+        </div>
+        <!-- Delivery Section -->
+        <div class="col-md-4 payment-box">
+            <i class="fa fa-truck text-warning mb-3"></i>
+            <h3>How You Get Your Cereal</h3>
+            <p>Once your payment is confirmed, your cereals are packed and delivered to your doorstep quickly and efficiently.</p>
         </div>
     </div>
 </div>
+
+<!-- Add the CSS for Motion and Interactivity -->
+<style>
+    /* General Styles for Boxes */
+    .payment-box {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+    }
+
+    .payment-box h3 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #007bff;
+    }
+
+    .payment-box p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .payment-box i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        animation: bounce 2s infinite ease-in-out;
+    }
+
+    /* Hover Effects */
+    .payment-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        background-color: #e9ecef;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Bounce Icon Animation */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Delay Animation for Staggered Appearance */
+    .payment-box:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .payment-box:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+
+    .payment-box:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+</style>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {

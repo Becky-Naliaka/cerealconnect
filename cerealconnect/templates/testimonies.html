@@ -1,53 +1,172 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Testimonies - CerealConnect{% endblock %}
-
 {% block content %}
-    <!-- Testimonial Section -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="mb-5">Our Clients Say!!!</h1>
+<!-- Testimonials Section -->
+<div class="container-xxl py-5" id="testimonials">
+    <div class="container text-center">
+        <h6 class="section-title bg-white text-center text-primary px-3 mb-4"><i class="fa fa-comments"></i> Testimonials</h6>
+        <h1 class="mb-5">What Our Customers Say</h1>
+
+        <!-- Testimonial Slider Section -->
+        <div class="testimonial-slider-container position-relative">
+            <div class="testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/img3.jfif' %}" class="rounded-circle mb-3 shadow" alt="Customer 1">
+                        <div>
+                            <p class="fs-4">"The cereals are fresh and delicious! I love how easy it is to shop and get them delivered."</p>
+                            <p class="fw-bold">Jane Munyasia</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/red.jfif' %}" class="rounded-circle mb-3 shadow" alt="Customer 2">
+                        <div>
+                            <p class="fs-4">"Great experience! I always get high-quality cereals and the service is amazing."</p>
+                            <p class="fw-bold">Rede Muchanga</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/img1.jfif' %}" class="rounded-circle mb-3 shadow" alt="Customer 3">
+                        <div>
+                            <p class="fs-4">"I have been a regular customer for years, and the quality never disappoints!"</p>
+                            <p class="fw-bold">Cosmas Kimatuni</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/img7.webp' %}" class="rounded-circle mb-3 shadow" alt="Customer 4">
+                        <div>
+                            <p class="fs-4">"I recommend this site to everyone. The cereals are healthy, tasty, and affordable."</p>
+                            <p class="fw-bold">Peter Mutisya</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Owl Carousel -->
-            <div class="owl-carousel testimonial-carousel position-relative">
-
-                <!-- Testimonial Item 1 -->
-                <div class="testimonial-item wow fadeInUp bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/img3.jfif' %}" style="width: 80px; height: 80px;" alt="Leah Grace">
-                    <h5 class="mb-0">Leah Grace</h5>
-                    <p>Nairobi, Kenya</p>
-                    <p class="mt-2 mb-0">"I have had the best experience with CerealConnect. Their cereals are of top quality and the service is exceptional. I highly recommend them!"</p>
-                </div>
-
-                <!-- Testimonial Item 2 -->
-                <div class="testimonial-item wow fadeInUp bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/img1.jfif' %}" style="width: 80px; height: 80px;" alt="Cosmas Kimatuni">
-                    <h5 class="mb-0">Cosmas Kimatuni</h5>
-                    <p>Mombasa, Kenya</p>
-                    <p class="mt-2 mb-0">"CerealConnect offers a wide variety of cereals. The quality is unbeatable, and I have enjoyed every purchase I've made!"</p>
-                </div>
-
-                <!-- Testimonial Item 3 -->
-                <div class="testimonial-item wow fadeInUp bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/red.jfif' %}" style="width: 80px; height: 80px;" alt="Redempta Muchanga">
-                    <h5 class="mb-0">Redempta Muchanga</h5>
-                    <p>Kisumu, Kenya</p>
-                    <p class="mt-2 mb-0">"CerealConnect's customer service is fantastic! They made my shopping experience easy and enjoyable. The cereals are fresh and delicious."</p>
-                </div>
-            </div>
+            <!-- Slide Arrows -->
+            <button class="slide-arrow left" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slide-arrow right" onclick="moveSlide(1)">&#10095;</button>
         </div>
     </div>
+</div>
+
+<!-- CSS for Slider -->
+<style>
+    .testimonial-slider-container {
+        max-width: 900px;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .testimonial-slider {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .testimonial-item {
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        animation: fadeIn 1.5s ease forwards;
+    }
+
+    .testimonial-item img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial-item img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial-item p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .slide-arrow {
+        position: absolute;
+        top: 50%;
+        font-size: 2rem;
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        color: #007bff;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        z-index: 10;
+        transform: translateY(-50%);
+        transition: background-color 0.3s ease;
+    }
+
+    .slide-arrow:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .left {
+        left: 20px;
+    }
+
+    .right {
+        right: 20px;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- JavaScript for Sliding -->
+<script>
+    let currentSlide = 0;
+
+    function moveSlide(direction) {
+        const slider = document.querySelector('.testimonial-slider');
+        const slides = document.querySelectorAll('.testimonial-item');
+        const totalSlides = slides.length;
+
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+        slider.style.transform = `translateX(${-currentSlide * 100}%)`;
+    }
+</script>
+
 {% endblock %}
 
-{% block head %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
-{% endblock %}
+
+
+
+
+
+
+
+
+
 

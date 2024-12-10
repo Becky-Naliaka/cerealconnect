@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cerealconnect',  # Ensure the app is listed here
+    'cerealconnect',
     'crispy_forms',
     'crispy_bootstrap4',
     'django_daraja',
@@ -46,14 +46,14 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Mpesa settings (for payment integration)
-MPESA_CONSUMER_KEY = 'your_consumer_key_here'
-MPESA_CONSUMER_SECRET = 'your_consumer_secret_here'
-MPESA_SHORTCODE = 'your_shortcode_here'
-MPESA_LIPA_SHORTCODE = '174379'
-MPESA_LIPA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
-MPESA_LIPA_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
-MPESA_API_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
-
+MPESA = {
+    "CONSUMER_KEY": "7DSWGTLpj62y9wHo0ljQ5AkvGa0pXFmmGpJdeeWFF9RiGJrc",
+    "CONSUMER_SECRET": "RWcJZnWOV7qQg5ebIEOvDPerZYbtXKeqImpWd8HIL4cSUWXMA0iYDdAOZy4t1XLk",
+    "SHORT_CODE": "174379",
+    "PASSKEY": "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+    "CALLBACK_URL": " https://ca26-154-159-252-222.ngrok-free.app -> http://localhost:8000  ",
+    "API_URL": "https://sandbox.safaricom.co.ke"
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'cerealworld.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Using MySQL database
-        'NAME': 'mark',
+        'NAME': 'local',
         'USER': 'root',
         'PASSWORD': '',  # Update with your database password
         'HOST': 'localhost',
@@ -99,6 +99,15 @@ DATABASES = {
         },
     }
 }
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'naliakabecky52@gmail.com'
+EMAIL_HOST_PASSWORD = 'Becky@22'
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

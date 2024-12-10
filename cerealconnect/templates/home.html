@@ -1,12 +1,24 @@
+{% extends 'base.html' %}
 
-{% extends "base.html" %}
 {% load static %}
-{% block content %}
-     <!-- About Start -->
-    {% load static %}
 
-{#{% block content %}#}
-<style>
+{% block content %}
+
+    <!-- Hero Section with Overlay Image -->
+<div class="container-xxl py-5 position-relative">
+    <img class="img-fluid w-100" src="{% static 'images/cereal.webp' %}" alt="Featured Cereal" style="filter: blur(1px);">
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center text-center">
+        <div class="text-white animate__animated animate__fadeIn animate__delay-1s">
+            <h2 class="display-4 mb-4 animate__animated animate__fadeIn animate__delay-2s">Welcome to CerealConnect!</h2>
+            <p class="fs-3 mb-4 animate__animated animate__fadeIn animate__delay-3s">Discover fresh, delicious cereals at your fingertips!</p>
+            <!-- Update this link to navigate to the shop page -->
+            <a href="{% url 'cerealconnect:shop' %}" class="btn btn-primary btn-lg px-4 py-3 shadow-lg animate__animated animate__bounceIn animate__delay-4s">Start Shopping</a>
+        </div>
+    </div>
+</div>
+
+
+  <style>
     .fade-in {
         opacity: 0;
         transform: translateY(20px);
@@ -44,6 +56,79 @@
 </style>
 
 <div class="container py-5">
+    <div class="row text-center">
+        <!-- Feature 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="feature-box" style="transition: transform 0.5s ease, box-shadow 0.5s ease;">
+                <i class="fa fa-leaf fa-3x text-success mb-3 animated-icon" style="animation: bounce 2s infinite;"></i>
+                <h4 class="text-primary">Fresh from Farms</h4>
+                <p>All our cereals are sourced directly from trusted farms, ensuring the highest quality and freshness.</p>
+            </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="feature-box" style="transition: transform 0.5s ease, box-shadow 0.5s ease;">
+                <i class="fa fa-clock fa-3x text-warning mb-3 animated-icon" style="animation: pulse 1.5s infinite;"></i>
+                <h4 class="text-primary">Fast Delivery</h4>
+                <p>Enjoy reliable and fast delivery services to your doorstep with every order you make.</p>
+            </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="feature-box" style="transition: transform 0.5s ease, box-shadow 0.5s ease;">
+                <i class="fa fa-thumbs-up fa-3x text-info mb-3 animated-icon" style="animation: shake 1.5s infinite;"></i>
+                <h4 class="text-primary">Customer Satisfaction</h4>
+                <p>We prioritize your satisfaction by delivering only the best cereals and excellent service.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Custom CSS for Animations and Hover Effects -->
+<style>
+    /* Feature Hover Effect */
+    .feature-box:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Bouncing Icon Animation */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Pulse Icon Animation */
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    /* Shake Icon Animation */
+    @keyframes shake {
+        0%, 100% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-5px);
+        }
+        50% {
+            transform: translateX(5px);
+        }
+        75% {
+            transform: translateX(-5px);
+        }
+    }
+</style>
+
     <!-- Row 1: About Us Text on the Left, Image on the Right -->
     <div class="row align-items-center mb-5 fade-in">
         <!-- Text Column -->
@@ -61,7 +146,7 @@
     <div class="row align-items-center mb-5 fade-in">
         <!-- Image Column -->
         <div class="col-lg-6 mb-4 mb-lg-0">
-            <img class="img-fluid w-100" src="{% static 'images/obtain.jpg' %}" alt="How We Obtain Products">
+            <img class="img-fluid w-100" src="{% static 'images/image1.jpg' %}" alt="How We Obtain Products">
         </div>
         <!-- Text Column -->
         <div class="col-lg-6">
@@ -83,19 +168,6 @@
         </div>
     </div>
 
-    <!-- Row 4: How You Pay (Image on Left, Text on Right) -->
-    <div class="row align-items-center mb-5 fade-in">
-        <!-- Image Column -->
-        <div class="col-lg-6 mb-4 mb-lg-0">
-            <img class="img-fluid w-100" src="{% static 'images/image1.jpg' %}" alt="Payment Methods">
-        </div>
-        <!-- Text Column -->
-        <div class="col-lg-6">
-            <h2 class="text-primary mb-3">How You Pay</h2>
-            <p class="mb-4">We offer multiple payment methods for your convenience, including Mpesa, credit card, and bank transfers. After selecting your favorite cereals, you can choose your preferred payment option. Once payment is confirmed, we process and dispatch your order quickly and efficiently. We ensure secure transactions and provide customer support throughout the process.</p>
-        </div>
-    </div>
-</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -110,587 +182,195 @@
         fadeElements.forEach((el) => observer.observe(el));
     });
 </script>
-{#{% endblock %}#}
 
-<!-- Service Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-            <h1 class="mb-5">Our Services</h1>
+    <!-- Shopping, Payment, and Delivery Section -->
+<div class="container py-5" id="payment">
+    <h2 class="text-center text-primary mb-5">Shopping, Payment, and Delivery</h2>
+    <div class="row justify-content-center text-center mb-5">
+        <!-- Shopping Section -->
+        <div class="col-md-4 payment-box">
+            <i class="fa fa-shopping-cart text-success mb-3"></i>
+            <h3>How You Shop</h3>
+            <p>Browse through our wide selection of cereals, add to your cart, and proceed to checkout easily and securely.</p>
         </div>
-        <div class="row g-4">
-            <!-- Service 1 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-cart-plus text-primary mb-4 service-icon"></i>
-                        <h5>Product Listing</h5>
-                        <p>Our platform allows cereal sellers to easily upload and manage their products for buyers to explore.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 2 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-search text-primary mb-4 service-icon"></i>
-                        <h5>Product Search</h5>
-                        <p>Buyers can browse a wide variety of cereals, filter products, and find exactly what they are looking for.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 3 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-shopping-cart text-primary mb-4 service-icon"></i>
-                        <h5>Secure Checkout</h5>
-                        <p>Our secure checkout process ensures smooth transactions with options for various payment methods.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 4 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-credit-card text-primary mb-4 service-icon"></i>
-                        <h5>Mpesa Integration</h5>
-                        <p>We provide easy Mpesa payment integration, making it convenient for buyers to pay for their cereals.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 5 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-users text-primary mb-4 service-icon"></i>
-                        <h5>User Accounts</h5>
-                        <p>Both buyers and sellers can create personalized accounts to track their orders and manage products.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 6 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-shield-alt text-primary mb-4 service-icon"></i>
-                        <h5>Data Security</h5>
-                        <p>We prioritize the security of your data, ensuring a safe and protected environment for all transactions.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 7 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-headset text-primary mb-4 service-icon"></i>
-                        <h5>24/7 Support</h5>
-                        <p>Our customer support team is available round-the-clock to assist you with any inquiries or issues.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 8 -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4 service-box">
-                        <i class="fa fa-3x fa-truck text-primary mb-4 service-icon"></i>
-                        <h5>Fast Delivery</h5>
-                        <p>We ensure quick and reliable delivery of your cereals right to your doorstep.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Payment Section -->
+        <div class="col-md-4 payment-box">
+            <i class="fa fa-credit-card text-primary mb-3"></i>
+            <h3>How You Pay</h3>
+            <p>Choose your payment method from MPesa or other available options, and complete your transaction with ease.</p>
+        </div>
+        <!-- Delivery Section -->
+        <div class="col-md-4 payment-box">
+            <i class="fa fa-truck text-warning mb-3"></i>
+            <h3>How You Get Your Cereal</h3>
+            <p>Once your payment is confirmed, we deliver the cereals right to your doorstep with fast and reliable shipping methods.</p>
         </div>
     </div>
 </div>
-<!-- Service End -->
 
-<!-- Add this CSS -->
+<!-- Add the CSS for Motion and Interactivity -->
 <style>
-    .service-box {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* General Styles for Boxes */
+    .payment-box {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
     }
 
-    .service-box:hover {
-        transform: scale(1.05); /* Slightly increase the size */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    .payment-box h3 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #007bff;
     }
 
-    .service-icon {
-        transition: color 0.3s ease, transform 0.3s ease;
+    .payment-box p {
+        font-size: 1rem;
+        color: #6c757d;
     }
 
-    .service-box:hover .service-icon {
-        transform: scale(1.2); /* Slightly enlarge the icon on hover */
-        color: #f39c12; /* Change icon color on hover */
+    .payment-box i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        animation: bounce 2s infinite ease-in-out;
     }
 
-    .service-box:active {
-        transform: scale(0.98); /* Slightly shrink when clicked */
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Change shadow on click */
-    }
-</style>
-
-{#{% extends 'base.html' %}#}
-{% load custom_filters %}
-{% load currency_filters %}
-
-{% block title %}Shop{% endblock %}
-
-{#{% block content %}#}
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Cereal Shop</h6>
-            <h1 class="mb-5">Our Popular Products</h1>
-        </div>
-        <div class="row g-4">
-            {% for product in products %}
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="product-item rounded pt-3">
-                        <div class="product-box p-4">
-                            <div class="product-image">
-                                {% if product.image %}
-                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
-                                {% else %}
-                                    <img src="{% static 'images/buckwheat.jfif' %}" alt="No image available" class="img-fluid">
-                                {% endif %}
-                            </div>
-                            <h5 class="mt-3">{{ product.name }}</h5>
-                            <p>{{ product.description|truncatewords:20 }}</p>
-                            <p class="price">Price: {{ product.price|currency }}</p>
-                            <div class="product-actions">
-                                <a href="{% url 'add-to-cart' product.id %}" class="btn btn-success">
-                                    <i class="fa fa-shopping-cart"></i> Add to Cart
-                                </a>
-                                <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">
-                                    <i class="fa fa-info-circle"></i> Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% empty %}
-                <p>No products available at the moment. Please check back later!</p>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-{#{% endblock %}#}
-
-{#{% block navbar %}#}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand wow fadeInLeft" data-wow-delay="0.3s" href="{% url 'cerealconnect:home' %}">CerealConnect</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <!-- Other Navbar Links -->
-                    <li class="nav-item">
-                        <a href="{% url 'cerealconnect:view-cart' %}" class="cart-icon wow zoomIn" data-wow-delay="0.5s">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"></path>
-                            </svg>
-                            {% if cart_item_count > 0 %}
-                                <span class="cart-badge animate__animated animate__pulse animate__infinite">{{ cart_item_count }}</span>
-                            {% endif %}
-                        </a>
-                    </li>
-                    <!-- Other Links (like Login/Logout) -->
-                </ul>
-            </div>
-        </div>
-    </nav>
-{#{% endblock %}#}
-
-{#{% block head %}#}
-    <!-- Include Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-    <!-- Include WOW.js and Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
-
-
-
-    <!-- Products Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Our Products</h6>
-            <h1 class="mb-5">Explore Our Popular Products</h1>
-        </div>
-        <div class="row g-4 justify-content-center">
-            {% for product in products %}
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="product-item">
-                        <div class="overflow-hidden">
-                            {% if product.image %}
-                                <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                            {% else %}
-                                <img class="img-fluid" src="{% static 'images/buckwheat.jfif' %}" alt="{{ product.name }}">
-                            {% endif %}
-                        </div>
-                        <div class="d-flex border-bottom">
-                            <small class="flex-fill text-center border-end py-2">
-                                <i class="fa fa-cogs text-primary me-2"></i>{{ product.category }}
-                            </small>
-                            <small class="flex-fill text-center border-end py-2">
-                                <i class="fa fa-calendar-alt text-primary me-2"></i>{{ product.date_added|date:"d M Y" }}
-                            </small>
-                            <small class="flex-fill text-center py-2">
-                                <i class="fa fa-user text-primary me-2"></i>{{ product.seller.name }}
-                            </small>
-                        </div>
-                        <div class="text-center p-4 wow fadeInUp" data-wow-delay="0.5s">
-                            <h3 class="mb-0">${{ product.price }}</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <p>{{ product.description|truncatewords:20 }}</p>
-                            <div class="d-flex justify-content-center mb-2">
-                                <a href="{% url 'product-detail' product.id %}" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">View Details</a>
-                                <a href="{% url 'add-to-cart' product.id %}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% empty %}
-                <p>No products available at the moment. Please check back later!</p>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-<!-- Products End -->
-
-
-
-    <!<!-- Order Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-        <div class="order-form p-5">
-            <div class="row g-5 align-items-center">
-                <!-- Left Side: Order Details -->
-                <div class="col-md-6 text-dark">
-                    <h6 class="text-primary text-uppercase">Place Your Order</h6>
-                    <h1 class="text-dark mb-4">Order Your Favorite Cereal</h1>
-                    <p class="mb-4">Browse through our variety of cereals, select the ones you love, and place your order with ease. We deliver directly to your doorstep with secure payment options like M-Pesa.</p>
-                    <p class="mb-4">Choose from a wide selection of cereals including maize, barley, rice, and more! We ensure quality and freshness in every box.</p>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="#order-form">Start Your Order</a>
-                </div>
-                <!-- Right Side: Order Form -->
-                <div class="col-md-6">
-                    <h1 class="text-dark mb-4">Order Your Cereal</h1>
-                    <form id="order-form">
-                        <div class="row g-3">
-                            <!-- Name Input -->
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name" required>
-                                    <label for="name">Your Name</label>
-                                </div>
-                            </div>
-                            <!-- Email Input -->
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control bg-transparent" id="email" placeholder="Your Email" required>
-                                    <label for="email">Your Email</label>
-                                </div>
-                            </div>
-                            <!-- Cereal Selection -->
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <select class="form-select bg-transparent" id="cereal" required>
-                                        <option value="maize">Maize</option>
-                                        <option value="barley">Barley</option>
-                                        <option value="rice">Rice</option>
-                                        <option value="wheat">Wheat</option>
-                                    </select>
-                                    <label for="cereal">Select Cereal</label>
-                                </div>
-                            </div>
-                            <!-- Quantity Input -->
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control bg-transparent" id="quantity" placeholder="Quantity" required min="1">
-                                    <label for="quantity">Quantity (Kg)</label>
-                                </div>
-                            </div>
-                            <!-- Delivery Method -->
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <select class="form-select bg-transparent" id="delivery" required>
-                                        <option value="standard">Standard Delivery</option>
-                                        <option value="express">Express Delivery</option>
-                                    </select>
-                                    <label for="delivery">Delivery Method</label>
-                                </div>
-                            </div>
-                            <!-- Payment Method -->
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <select class="form-select bg-transparent" id="payment" required>
-                                        <option value="mpesa">M-Pesa</option>
-                                        <option value="card">Credit Card</option>
-                                    </select>
-                                    <label for="payment">Payment Method</label>
-                                </div>
-                            </div>
-                            <!-- Special Request -->
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control bg-transparent" placeholder="Special Request" id="special-request" style="height: 100px"></textarea>
-                                    <label for="special-request">Special Request</label>
-                                </div>
-                            </div>
-                            <!-- Submit Button -->
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Place Order</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Order End -->
-
- <!-- Process Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Order Process</h6>
-            <h1 class="mb-5">3 Easy Steps to Buy Cereal</h1>
-        </div>
-        <div class="row gy-5 gx-4 justify-content-center">
-            <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="position-relative border border-primary pt-5 pb-4 px-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
-                        <i class="fa fa-shopping-cart fa-3x text-white"></i>
-                    </div>
-                    <h5 class="mt-4">Choose Your Cereal</h5>
-                    <hr class="w-25 mx-auto bg-primary mb-1">
-                    <hr class="w-50 mx-auto bg-primary mt-0">
-                    <p class="mb-0">Browse through a variety of cereals, select your favorites, and add them to your cart.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="position-relative border border-primary pt-5 pb-4 px-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
-                        <i class="fa fa-credit-card fa-3x text-white"></i>
-                    </div>
-                    <h5 class="mt-4">Make Payment</h5>
-                    <hr class="w-25 mx-auto bg-primary mb-1">
-                    <hr class="w-50 mx-auto bg-primary mt-0">
-                    <p class="mb-0">Securely pay for your selected cereals using online methods like M-Pesa or card payment.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="position-relative border border-primary pt-5 pb-4 px-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
-                        <i class="fa fa-truck fa-3x text-white"></i>
-                    </div>
-                    <h5 class="mt-4">Receive Your Order</h5>
-                    <hr class="w-25 mx-auto bg-primary mb-1">
-                    <hr class="w-50 mx-auto bg-primary mt-0">
-                    <p class="mb-0">Once payment is confirmed, your cereals will be delivered to your address quickly and securely.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Process End -->
-
-<!-- Add custom CSS for motion effect -->
-<style>
-    /* Add some fade-in effect on scroll */
-    .wow {
-        visibility: hidden;
+    /* Hover Effects */
+    .payment-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        background-color: #e9ecef;
     }
 
-    /* Custom fadeInUp animation for motion */
-    .wow.fadeInUp {
-        animation-name: fadeInUp;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-        animation-delay: 0.2s;
-        visibility: visible;
-    }
-
-    @keyframes fadeInUp {
+    /* Fade-in Animation */
+    @keyframes fadeIn {
         0% {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
         }
         100% {
             opacity: 1;
             transform: translateY(0);
         }
     }
+
+    /* Bounce Icon Animation */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Delay Animation for Staggered Appearance */
+    .payment-box:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .payment-box:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+
+    .payment-box:nth-child(3) {
+        animation-delay: 0.6s;
+    }
 </style>
 
-<!-- Include Wow.js for scroll-triggered animations -->
-<script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.2/dist/wow.min.js"></script>
-<script>
-    // Initialize wow.js for scroll animations
-    new WOW().init();
-</script>
+<!-- Testimonials Section -->
+<div class="container-xxl py-5" id="testimonials">
+    <div class="container text-center">
+        <h6 class="section-title bg-white text-center text-primary px-3 mb-4"><i class="fa fa-comments"></i> Testimonials</h6>
+        <h1 class="mb-5">What Our Customers Say</h1>
 
-
-
-
-    <!-- Team Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Our Team</h6>
-            <h1 class="mb-5">Meet Our Cereal Experts</h1>
-        </div>
-        <div class="row g-4">
-            <!-- Team Member 1 -->
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{% static 'images/maize1.jfif' %}" alt="Cereal Expert 1">
-                    </div>
-                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">John Doe</h5>
-                        <small>Chief Cereal Expert</small>
+        <!-- Testimonial Scrolling Section -->
+        <div class="testimonial-scroll-container">
+            <div class="testimonial-scroll">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/img3.jfif' %}" class="rounded-circle mb-3" alt="Customer 1" style="width: 100px; height: 100px; object-fit: cover;">
+                        <div>
+                            <p class="fs-4">"The cereals are fresh and delicious! I love how easy it is to shop and get them delivered."</p>
+                            <p class="fw-bold">Jane Doe</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{% static 'images/maize2.jfif' %}" alt="Cereal Expert 2">
-                    </div>
-                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Jane Smith</h5>
-                        <small>Product Specialist</small>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/img6.webp' %}" class="rounded-circle mb-3" alt="Customer 2" style="width: 100px; height: 100px; object-fit: cover;">
+                        <div>
+                            <p class="fs-4">"Great experience! I always get high-quality cereals and the service is amazing."</p>
+                            <p class="fw-bold">John Smith</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Team Member 3 -->
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{% static 'images/barley.jfif' %}" alt="Cereal Expert 3">
-                    </div>
-                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Samuel Brown</h5>
-                        <small>Customer Support</small>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/red.jfif' %}" class="rounded-circle mb-3" alt="Customer 3" style="width: 100px; height: 100px; object-fit: cover;">
+                        <div>
+                            <p class="fs-4">"I have been a regular customer for years, and the quality never disappoints!"</p>
+                            <p class="fw-bold">Mary Lee</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{% static 'images/rice1.jfif' %}" alt="Cereal Expert 4">
-                    </div>
-                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Lily James</h5>
-                        <small>Marketing Head</small>
+                <!-- Testimonial 4 -->
+                <div class="testimonial-item">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{% static 'images/img1.jfif' %}" class="rounded-circle mb-3" alt="Customer 4" style="width: 100px; height: 100px; object-fit: cover;">
+                        <div>
+                            <p class="fs-4">"I recommend this site to everyone. The cereals are healthy, tasty, and affordable."</p>
+                            <p class="fw-bold">Peter Mutisya</p>
+                            <p class="text-muted">Customer</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Team End -->
 
-<!-- Testimonial Start -->
-
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-        <div class="text-center">
-            <h6 class="section-title bg-white text-center text-primary px-3">What Our Customers Say</h6>
-            <h1 class="mb-5">CerealConnect Clients' Feedback</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel position-relative">
-            <div class="testimonial-item bg-white text-center border p-4">
-                <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/red.jfif' %}" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Sarah M.</h5>
-                <p>Nairobi, Kenya</p>
-                <p class="mb-0">"CerealConnect made it so easy to choose and order cereals. The delivery was fast, and I’m enjoying the freshest grains!"</p>
-            </div>
-            <div class="testimonial-item bg-white text-center border p-4">
-                <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/img1.jfif' %}" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">John O.</h5>
-                <p>Nairobi, Kenya</p>
-                <p class="mt-2 mb-0">"I love the wide variety of cereals available. Ordering through CerealConnect was seamless and reliable!"</p>
-            </div>
-            <div class="testimonial-item bg-white text-center border p-4">
-                <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/img3.jfif' %}" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Peter N.</h5>
-                <p>Mombasa, Kenya</p>
-                <p class="mt-2 mb-0">"The cereals are of top quality. I appreciate the fast delivery and easy payment options, especially the M-Pesa integration."</p>
-            </div>
-            <div class="testimonial-item bg-white text-center border p-4">
-                <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{% static 'images/img6.webp' %}" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Grace A.</h5>
-                <p>Kisumu, Kenya</p>
-                <p class="mt-2 mb-0">"Ordering cereals through CerealConnect was an effortless experience. The products were fresh and just as described!"</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Testimonial End -->
-
-<!-- Add custom CSS for continuous left to right motion -->
+<!-- Add the CSS for continuous horizontal scrolling -->
 <style>
-    .testimonial-carousel {
-        display: flex;
+    .testimonial-scroll-container {
         overflow: hidden;
-        white-space: nowrap;
-        animation: moveTestimonies 20s linear infinite;
+        position: relative;
+        width: 100%;
+    }
+
+    .testimonial-scroll {
+        display: flex;
+        animation: scroll-left 15s linear infinite;
     }
 
     .testimonial-item {
-        display: inline-block;
-        width: 300px; /* Set a fixed width for the testimonial items */
-        margin-right: 20px; /* Space between testimonials */
-        text-align: center;
+        flex-shrink: 0;
+        margin: 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    @keyframes moveTestimonies {
+    .testimonial-item img {
+        margin-bottom: 15px;
+    }
+
+    .testimonial-item p {
+        font-size: 1.2rem;
+    }
+
+    @keyframes scroll-left {
         0% {
-            transform: translateX(0);
+            transform: translateX(100%);
         }
         100% {
             transform: translateX(-100%);
@@ -698,29 +378,69 @@
     }
 </style>
 
-<!-- Add JavaScript to make the carousel move continuously -->
-<script>
-    $(document).ready(function(){
-        // Initialize Owl Carousel
-        $(".testimonial-carousel").owlCarousel({
-            items: 1, // Single item at a time
-            loop: true, // Infinite loop
-            margin: 20, // Margin between items
-            autoplay: true, // Autoplay the carousel
-            autoplayTimeout: 5000, // Timeout between each slide
-            autoplayHoverPause: true, // Pause on hover
-            smartSpeed: 1000 // Smooth transition speed
-        });
-    });
-</script>
+    <div class="container mt-5 text-center">
+    <!-- Welcome Text -->
+    <h3 class="mb-4" style="font-size: 2.5rem; font-weight: bold; color: #333;">
+        <i class="fas fa-wallet" style="color: #007bff; animation: bounce 2s infinite;"></i>
+        Welcome to CerealConnect Payment
+    </h3>
+    <p class="mb-4" style="font-size: 1.2rem; color: #777;">
+        <i class="fas fa-shopping-cart" style="color: #ffa839;"></i>
+        Quick and easy payments for your cereal purchases. Let's complete your transaction!
+    </p>
+    <!-- Payment Button -->
+    <a href="{% url 'cerealconnect:stk' %}" class="btn btn-primary btn-lg px-5 py-3" style="font-size: 1.2rem; border-radius: 30px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <i class="fas fa-credit-card"></i> Make a Payment
+    </a>
+</div>
 
+<!-- Add Some Custom CSS for Motion -->
+<style>
+    /* Button Hover Effect */
+    .btn-primary:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Icon Bounce Animation */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+</style>
+
+
+<!-- Add some custom CSS for extra flair -->
+<style>
+    .container h3 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        text-transform: uppercase;
+    }
+
+    .container p {
+        font-family: 'Arial', sans-serif;
+        color: #777;
+    }
+
+    .btn-primary {
+        background-color: #c7f384;
+        border-color: #cdee8e;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #cdef94;
+        transform: scale(1.05);
+
+</style>
 
 
 {% endblock %}
-
-
-
-
 
 
 
